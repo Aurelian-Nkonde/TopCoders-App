@@ -1,0 +1,37 @@
+﻿@model IEnumerable<topCoders.Models.Coder>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container mx-auto max-w-3xl">
+    <h1 class="text-3xl text-center font-sans pb-6">Our List Of Top Coders..</h1>
+
+    @if(Model.Count() >= 1)
+    {
+        <table class="table border-2 border-gray-600 table-fixed w-full">
+            <thead>
+                <th class="border py-2 font-sans text-xl">Name</th>
+                <th class="border py-2 font-sans text-xl">Age</th>
+                <th class="border py-2 font-sans text-xl">Options</th>
+            </thead>
+            <tbody class="w-full text-center">
+                @foreach (var coder in Model)
+                {
+                    <tr>
+                        <td class="border py-2 font-sans text-xl">@coder.Name</td>
+                        <td class="border py-2 font-sans text-xl">@coder.Age</td>
+                        <td class="border py-2 font-sans text-xl text-red-500 underline"><a asp-action="DeleteACoder" asp-route-Id="@coder.Id">Delete</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <h1 class="font-sarif text-3xl text-red-600">The Coders LIST Is Empty!</h1>
+    }
+    <div class="py-7">
+        <a asp-action="CreateACoder" class="font-sans text-xl underline">Add your top coder!</a>
+    </div>
+</div>

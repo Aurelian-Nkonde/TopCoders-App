@@ -1,0 +1,32 @@
+@model topCoders.Models.Coder;
+
+
+@{
+    ViewData["title"] = "Create a coder";
+}
+
+
+<div class="container mx-auto max-w-2xl">
+    <h1 class="font-sans text-3xl pb-5">Create a Coder below</h1>
+    <form asp-action="CreateACoder" method="post">
+        <div class="text-red-600" asp-validation-summary="ModelOnly" ></div>
+        <div class="py-2">
+            <label asp-for="Name"></label>
+            <input asp-for="Name" type="text" class="py-2 px-3 w-full border-2 border-black">
+            <span asp-validation-for="Name" class="text-red-500"></span>
+        </div>
+        <div class="py-2">
+            <label asp-for="Age"></label>
+            <input asp-for="Age" type="number" class="py-2 px-3 w-full border-2 border-black">
+            <span asp-validation-for="Age" class="text-red-500"></span>
+        </div>
+        <button type="submit" class="bg-blue-500 py-2 px-10 text-xl text-white">Submit</button>
+    </form>
+</div>
+
+
+@section Scripts{
+    @{ <partial name="_ValidationScriptsPartial" /> }
+}
+
+
